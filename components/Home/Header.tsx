@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import Navbar from "../Navbar/Navbar";
-import Background from "@/assets/images/Background.jpg";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const Container = styled.div`
+interface ContainerProps {
+  background: string;
+}
+const Container = styled.div<ContainerProps>`
   width: 100vw;
-  background-image: url(${Background.src});
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(${(props) => props.background});
   background-size: cover;
   height: 100vh;
   margin: auto;
@@ -13,7 +16,9 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   width: 1200px;
-  margin: 92px auto;
+  margin: auto;
+  display: flex;
+  align-items: center;
 `;
 const DescriptionBox = styled.h1`
   width: 404px;
@@ -55,22 +60,31 @@ const DescriptionBox = styled.h1`
     text-transform: uppercase;
   }
 `;
+interface TvProps {
+  backdrop_path: string;
+  name: string;
+  overview: string;
+  vote_average: number;
+}
+interface trendingTvProps {
+  trendingTv: TvProps[];
+}
 
-export default function Header() {
+export default function Header({ trendingTv }: trendingTvProps) {
+  const firstTrendingTV = trendingTv[1];
   return (
-    <Container>
+    <Container
+      background={`https://image.tmdb.org/t/p/original${firstTrendingTV.backdrop_path}`}
+    >
       <Navbar />
       <Wrapper>
         <DescriptionBox>
-          <h1>John Wick 3 : Parabellum</h1>
+          <h1>{firstTrendingTV.name}</h1>
           <p>
-            <span>TMDb</span>86.0 / 10
+            <span>TMDb</span>
+            {firstTrendingTV.vote_average} / 10
           </p>
-          <p>
-            John Wick is on the run after killing a member of the international
-            assassins' guild, and with a $14 million price tag on his head, he
-            is the target of hit men and women everywhere.
-          </p>
+          <p>{firstTrendingTV.overview}</p>
           <button>
             <i className="bi bi-play-circle-fill"></i> Watch trailer
           </button>

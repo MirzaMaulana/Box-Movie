@@ -30,7 +30,7 @@ interface CardProps {
   poster_path: string;
   media_type: string;
   release_date: string;
-  vote_avarage: number;
+  vote_average: number;
 }
 
 export default function Card({
@@ -38,7 +38,7 @@ export default function Card({
   poster_path,
   media_type,
   release_date,
-  vote_avarage,
+  vote_average,
 }: CardProps) {
   return (
     <Container>
@@ -52,7 +52,7 @@ export default function Card({
       <small>{release_date}</small>
       <p>{title}</p>
       <small>
-        <span>TMDb</span> {vote_avarage} / 10
+        <span>TMDb</span> {vote_average} / 10
       </small>
     </Container>
   );

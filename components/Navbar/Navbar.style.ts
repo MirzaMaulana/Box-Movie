@@ -62,4 +62,34 @@ const NavMenu = styled.button`
   }
 `;
 
-export { Nav, NavAuth, NavLogo, NavSearch, NavMenu };
+interface NavListProps {
+  isOpen: boolean;
+}
+const NavList = styled.ul<NavListProps>`
+  list-style: none;
+  display: ${(props) => (props.isOpen === true ? "flex" : "none")};
+  position: absolute;
+  align-items: center;
+
+  flex-direction: column;
+  padding: 1.5rem 3rem;
+  background-color: white;
+  right: 4rem;
+  top: 3rem;
+  font-weight: semibold;
+  font-family: DM Sans;
+  font-size: 1rem;
+  gap: 5px;
+  border-radius: 0.5rem;
+  li {
+    a {
+      color: black;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+`;
+
+export { Nav, NavAuth, NavLogo, NavSearch, NavMenu, NavList };

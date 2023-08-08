@@ -30,12 +30,12 @@ interface MovieProps {
   poster_path: string;
   media_type: string;
   release_date: string;
-  vote_avarage: number;
+  vote_average: number;
 }
 interface TrendingMovieProps {
   TrendingMovie: MovieProps[];
 }
-export default function SearchMovie({ TrendingMovie }: TrendingMovieProps) {
+export default function TrendingMovie({ TrendingMovie }: TrendingMovieProps) {
   return (
     <Wrapper>
       <h1>
@@ -50,7 +50,7 @@ export default function SearchMovie({ TrendingMovie }: TrendingMovieProps) {
             poster_path={movie.poster_path}
             media_type={movie.media_type}
             release_date={movie.release_date}
-            vote_avarage={movie.vote_avarage}
+            vote_average={movie.vote_average}
           />
         ))}
       </Grid>

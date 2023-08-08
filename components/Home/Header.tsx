@@ -6,7 +6,7 @@ interface ContainerProps {
   background: string;
 }
 const Container = styled.div<ContainerProps>`
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${(props) => props.background});
   background-size: cover;
@@ -16,11 +16,12 @@ const Container = styled.div<ContainerProps>`
 
 const Wrapper = styled.div`
   width: 1200px;
-  margin: auto;
+  margin: 30px auto;
   display: flex;
   align-items: center;
 `;
-const DescriptionBox = styled.h1`
+
+const DescriptionBox = styled.div`
   width: 404px;
   height: 285px;
   font-family: DM Sans;
@@ -71,7 +72,7 @@ interface trendingTvProps {
 }
 
 export default function Header({ trendingTv }: trendingTvProps) {
-  const firstTrendingTV = trendingTv[1];
+  const firstTrendingTV = trendingTv[6];
   return (
     <Container
       background={`https://image.tmdb.org/t/p/original${firstTrendingTV.backdrop_path}`}

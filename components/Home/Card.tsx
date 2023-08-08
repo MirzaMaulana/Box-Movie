@@ -4,13 +4,21 @@ import Image from "next/image";
 
 const Container = styled.div`
   width: 250px;
-  height: 490px;
   p {
     font-family: DM Sans;
     font-size: 18px;
     font-weight: 700;
     line-height: normal;
   }
+`;
+const Label = styled.span`
+  font-weight: bold;
+  color: black;
+  padding: 3px 5px;
+  margin-right: 10px;
+  line-height: 150%;
+  border-radius: 5px;
+  background-color: yellow;
 `;
 const Media = styled.span`
   position: absolute;
@@ -52,7 +60,7 @@ export default function Card({
       <small>{release_date}</small>
       <p>{title}</p>
       <small>
-        <span>TMDb</span> {vote_average} / 10
+        <Label>TMDb</Label> {vote_average} / 10
       </small>
     </Container>
   );

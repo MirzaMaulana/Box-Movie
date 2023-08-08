@@ -29,7 +29,7 @@ export default function Home({
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const ApiKey = process.env.API_KEY;
     const ApiUrl = process.env.API_URL;

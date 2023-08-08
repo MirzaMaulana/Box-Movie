@@ -20,6 +20,10 @@ const Label = styled.span`
   border-radius: 5px;
   background-color: yellow;
 `;
+const Date = styled.small`
+  font-weight: 600;
+  color: gray;
+`;
 const Media = styled.span`
   position: absolute;
   font-family: DM Sans;
@@ -57,7 +61,7 @@ export default function Card({
         height={370}
         width={250}
       />
-      <small>{release_date}</small>
+      <Date>{release_date}</Date>
       <p>{title}</p>
       <small>
         <Label>TMDb</Label> {vote_average} / 10

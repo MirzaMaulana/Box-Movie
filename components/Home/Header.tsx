@@ -72,7 +72,7 @@ interface trendingTvProps {
 }
 
 export default function Header({ trendingTv }: trendingTvProps) {
-  const firstTrendingTV = trendingTv[6];
+  const firstTrendingTV = trendingTv[0];
   return (
     <Container
       background={`https://image.tmdb.org/t/p/original${firstTrendingTV.backdrop_path}`}

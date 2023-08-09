@@ -31,8 +31,8 @@ export default function Home({
 
 export const getStaticProps = async () => {
   try {
-    const ApiKey = process.env.API_KEY;
-    const ApiUrl = process.env.API_URL;
+    const ApiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const ApiUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await axios(
       `${ApiUrl}/trending/movie/week?api_key=${ApiKey}`
     );

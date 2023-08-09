@@ -23,10 +23,10 @@ const Navbar = () => {
         </NavMenu>
         <NavList isOpen={isOpen}>
           <li>
-            <Link href={"/"}>Home</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href={"/"}>Search</Link>
+            <Link href={"/list"}>Search</Link>
           </li>
           <li>
             <Link href={"/"}>About</Link>

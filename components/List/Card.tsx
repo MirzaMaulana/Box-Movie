@@ -57,7 +57,7 @@ export default function Card({
     <Container>
       <Media>{media_type}</Media>
       <Image
-        src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt={title}
         width={150}
         height={222}

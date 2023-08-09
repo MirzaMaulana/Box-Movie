@@ -21,7 +21,7 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </NavMenu>
-        <NavList isOpen={isOpen}>
+        <NavList open={isOpen}>
           <li>
             <Link href="/">Home</Link>
           </li>

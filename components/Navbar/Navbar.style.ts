@@ -62,12 +62,9 @@ const NavMenu = styled.button`
   }
 `;
 
-interface NavListProps {
-  isOpen: boolean;
-}
-const NavList = styled.ul<NavListProps>`
+const NavList = styled.ul<{ open: boolean }>`
   list-style: none;
-  display: ${(props) => (props.isOpen === true ? "flex" : "none")};
+  display: ${(props) => (props.open === true ? "flex" : "none")};
   position: absolute;
   align-items: center;
 

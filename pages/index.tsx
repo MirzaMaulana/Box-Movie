@@ -36,7 +36,9 @@ export const getStaticProps = async () => {
     const response = await axios(
       `${ApiUrl}/trending/movie/week?api_key=${ApiKey}`
     );
-    const response2 = await axios(`${ApiUrl}/tv/top_rated?api_key=${ApiKey}`);
+    const response2 = await axios(
+      `${ApiUrl}/trending/tv/week?api_key=${ApiKey}`
+    );
     const data = await response.data.results;
     const data2 = await response2.data.results;
     return {

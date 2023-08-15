@@ -1,4 +1,4 @@
-name: Build NextJS
+name: Build
 on:
   push:
     branches:
@@ -15,11 +15,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
-          registry-url: "https://registry.yarnpkg.com"
+          node-version: "14"
 
       - name: Install Dependencies
-        run: yarn install
+        run: npm install
 
       - name: Build Next.js App
-        run: yarn build
+        run: npm run build

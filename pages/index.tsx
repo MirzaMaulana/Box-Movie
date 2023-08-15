@@ -22,8 +22,11 @@ export default function Home({
       </Head>
 
       <main>
-        <Header trendingTv={trendingTv} />
-        <TrendingMovie TrendingMovie={trendingMovie.slice(0, 8)} />
+        <Header trendingTv={trendingTv} data-testid="header-component" />
+        <TrendingMovie
+          TrendingMovie={trendingMovie.slice(0, 8)}
+          data-testid="trending-movie-component"
+        />
       </main>
     </div>
   );

@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-          cache: npm
+          cache: "npm" # Menggunakan cache npm
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci # Menggunakan "npm ci" untuk instalasi dependencies
 
       - name: Build Next.js App
         run: npm run build

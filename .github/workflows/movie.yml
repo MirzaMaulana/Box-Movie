@@ -1,7 +1,7 @@
 name: Build NextJS
 on:
   push:
-    branch:
+    branches:
       - main
 
 jobs:

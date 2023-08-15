@@ -29,7 +29,7 @@ const Navbar = () => {
             <Link href={"/list"}>Search</Link>
           </li>
           <li>
-            <Link href={"/"}>About</Link>
+            <Link href={"/about"}>About</Link>
           </li>
         </NavList>
       </NavAuth>

@@ -1,4 +1,4 @@
-name: Build App
+name: Build
 on:
   push:
     branches:
@@ -23,5 +23,5 @@ jobs:
       - name: Build Next.js App
         run: npm run build
         env:
-          NEXT_PUBLIC_API_KEY: b729729cec45754865055897b4e2411e
-          NEXT_PUBLIC_API_URL: https://api.themoviedb.org/3
+          NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}

@@ -15,7 +15,7 @@ export default function About() {
       </Head>
       <main>
         <Header />
-        <h1>Barudak Ngawi</h1>
+        <h1>Barudak Ngawi Enjoyerss</h1>
       </main>
     </div>
   );

@@ -1,5 +1,4 @@
-name: Build and Deploy
-
+name: Build
 on:
   push:
     branches:
@@ -34,5 +33,3 @@ jobs:
           NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
           NEXT_PUBLIC_VERCEL_TOKEN: ${{ secrets.NEXT_PUBLIC_VERCEL_TOKEN }}
-          NEXT_PUBLIC_VERCEL_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_VERCEL_PROJECT_ID }}
-          NEXT_PUBLIC_VERCEL_ORG_ID: ${{ secrets.NEXT_PUBLIC_VERCEL_ORG_ID }}

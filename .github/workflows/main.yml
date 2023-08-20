@@ -25,6 +25,30 @@ jobs:
 
       - name: Build Next.js App
         run: npm run build
+
         env:
           NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+
+    deploy:
+      runs-on: ubuntu-latest
+      name: Deployment to Vercel
+
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: "16"
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Deploy to Vercel
+          run: npx vercel --token ${NEXT_PUBLIC_VERCEL_TOKEN}
+          env:
+            NEXT_PUBLIC_VERCEL_TOKEN: ${{ secrets.NEXT_PUBLIC_VERCEL_TOKEN }}
+            NEXT_PUBLIC_VERCEL_PROJECT_ID: ${{ secrets.NEXT_VERPUBLIC_CEL_PROJECT_ID }}
+            NEXT_PUBLIC_VERCEL_ORG_ID: ${{ secrets.NEXT_PUBLIC_VERCEL_ORG_ID }}

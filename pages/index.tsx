@@ -32,33 +32,23 @@ export default function Home({
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   try {
-    const ApiKey = process.env.NEXT_PUBLIC_API_KEY;
-    const ApiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await axios.get(
-      `${ApiUrl}/trending/movie/week?api_key=${ApiKey}`
+    const response = await axios(
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=b729729cec45754865055897b4e2411e`
     );
-    const response2 = await axios.get(
-      `${ApiUrl}/trending/tv/week?api_key=${ApiKey}`
+    const response2 = await axios(
+      `https://api.themoviedb.org/3/trending/tv/week?api_key=b729729cec45754865055897b4e2411e`
     );
-    const data = response.data.results;
-    const data2 = response2.data.results;
-
+    const data = await response.data.results;
+    const data2 = await response2.data.results;
     return {
       props: {
         trendingMovie: data,
         trendingTv: data2,
       },
     };
-  } catch (error) {
-    console.error(error);
-
-    return {
-      props: {
-        trendingMovie: [],
-        trendingTv: [],
-      },
-    };
+  } catch (error: any) {
+    console.log(error);
   }
-}
+};

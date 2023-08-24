@@ -27,8 +27,10 @@ jobs:
         run: npm run build
 
       - name: Deploy to vercel
+        env:
+          NEXT_PUBLIC_VERCEL_TOKEN: ${{ secrets.NEXT_PUBLIC_VERCEL_TOKEN }}
         run: |
           npm install --global vercel
-          vercel pull --yes --environment=production --token=7iWfzyXoAcSgKVwE0OqiZjvz
-          vercel build --prod --token=7iWfzyXoAcSgKVwE0OqiZjvz
-          vercel deploy --prebuilt --prod --token=7iWfzyXoAcSgKVwE0OqiZjvz
+          vercel pull --yes --environment=production --token=$NEXT_PUBLIC_VERCEL_TOKEN
+          vercel build --prod --token=$NEXT_PUBLIC_VERCEL_TOKEN
+          vercel deploy --prebuilt --prod --token=$NEXT_PUBLIC_VERCEL_TOKEN

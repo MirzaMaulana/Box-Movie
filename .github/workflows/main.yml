@@ -26,6 +26,13 @@ jobs:
       - name: Build Next.js App
         run: npm run build
 
+      - name: Deploy to vercel
+        run: |
+          npm install --global vercel
+          vercel pull --yes --environment=production --token=$NEXT_PUBLIC_VERCEL_TOKEN
+          vercel build --prod --token=$NEXT_PUBLIC_VERCEL_TOKEN
+          vercel deploy --prebuilt --prod --token=$NEXT_PUBLIC_VERCEL_TOKEN
         env:
           NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_VERCEL_TOKEN: ${{ secrets.NEXT_PUBLIC_VERCEL_TOKEN }}

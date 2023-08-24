@@ -32,25 +32,33 @@ export default function Home({
   );
 }
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
   try {
     const ApiKey = process.env.NEXT_PUBLIC_API_KEY;
     const ApiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await axios(
+    const response = await axios.get(
       `${ApiUrl}/trending/movie/week?api_key=${ApiKey}`
     );
-    const response2 = await axios(
+    const response2 = await axios.get(
       `${ApiUrl}/trending/tv/week?api_key=${ApiKey}`
     );
-    const data = await response.data.results;
-    const data2 = await response2.data.results;
+    const data = response.data.results;
+    const data2 = response2.data.results;
+
     return {
       props: {
         trendingMovie: data,
         trendingTv: data2,
       },
     };
-  } catch (error: any) {
-    console.log(error);
+  } catch (error) {
+    console.error(error);
+
+    return {
+      props: {
+        trendingMovie: [],
+        trendingTv: [],
+      },
+    };
   }
-};
+}

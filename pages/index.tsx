@@ -34,13 +34,11 @@ export default function Home({
 
 export const getStaticProps = async () => {
   try {
-    const ApiKey = process.env.NEXT_PUBLIC_API_KEY;
-    const ApiUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await axios(
-      `${ApiUrl}/trending/movie/week?api_key=${ApiKey}`
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=b729729cec45754865055897b4e2411e`
     );
     const response2 = await axios(
-      `${ApiUrl}/trending/tv/week?api_key=${ApiKey}`
+      `https://api.themoviedb.org/3/trending/tv/week?api_key=b729729cec45754865055897b4e2411e`
     );
     const data = await response.data.results;
     const data2 = await response2.data.results;

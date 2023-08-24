@@ -15,11 +15,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-        env:
-          NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-          NEXT_PUBLIC_VERCEL_TOKEN: ${{ secrets.NEXT_PUBLIC_VERCEL_TOKEN }}
-
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -37,3 +32,7 @@ jobs:
           vercel pull --yes --environment=production --token=$NEXT_PUBLIC_VERCEL_TOKEN
           vercel build --prod --token=$NEXT_PUBLIC_VERCEL_TOKEN
           vercel deploy --prebuilt --prod --token=$NEXT_PUBLIC_VERCEL_TOKEN
+        env:
+          NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_VERCEL_TOKEN: ${{ secrets.NEXT_PUBLIC_VERCEL_TOKEN }}

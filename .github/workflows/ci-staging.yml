@@ -3,7 +3,10 @@ name: Deploy to Development
 on:
   push:
     branches:
-      - staging
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -22,33 +25,49 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Build Application
-        run: yarn build
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: [build]
 
-    deploy:
-      name: Deploy
-      runs-on: ubuntu-latest
-      needs: [build]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: "16"
+      - name: Install Dependencies
+        run: yarn
 
-        - name: Install Dependencies
-          run: yarn
+      - name: Run Tests
+        run: yarn test
 
-        - name: Deploy to Vercel
-          env:
-            VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-            VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-            VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          run: |
-            yarn global add vercel
-            vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
-            vercel build --token=$VERCEL_TOKEN
-            vercel deploy --token=$VERCEL_TOKEN
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [build, test]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          yarn global add vercel
+          vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+          vercel deploy --token=$VERCEL_TOKEN
